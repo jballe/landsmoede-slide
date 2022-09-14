@@ -1,0 +1,32 @@
+<html>
+    <head>
+        <title>Landsm&oslash;ede 2022</title>
+    <style>
+
+    </style>
+    <script>
+        var contentUrl = 'https://cdn.contentful.com/spaces/3bo0wgdn74or/environments/master/entries?access_token=78FV9bf1cCZA1kJamP2oGyqlazYISN_1wBEReGz0gtE&content_type=projectorScreen&select=fields.documentUrl'
+        var updatedAt = null;
+        function update() {
+            fetch(contentUrl).then(function (data) {
+                if(!data ||!data.items || data.items.length === 0 || !data.items[0] || !data.items[0].fields || !data.items[0].fields.documentUrl) {
+                    return;
+                }
+
+                var newUrl = data.items[0].fields.documentUrl;
+                var documentUpdated = data.items[0].sys.updatedAt;
+                var frame = document.getElementById('f1');
+                if(frame.src === newUrl && updatedAt === updatedAt) {
+                    return;
+                }
+
+                frame.src = newUrl;
+                updatedAt = documentUpdated;
+            });
+        }
+
+        var intervalMinutes = 1;
+        setInterval(update, intervalMinutes * 60 * 1000);
+    </script>
+<body><iframe id="f1" src=""></iframe></body>
+</html>
