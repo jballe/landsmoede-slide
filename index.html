@@ -15,10 +15,12 @@
     <iframe id="f1" src="about:blank"></iframe>
 
     <script>
-        var contentUrl = 'https://cdn.contentful.com/spaces/3bo0wgdn74or/environments/master/entries?access_token=78FV9bf1cCZA1kJamP2oGyqlazYISN_1wBEReGz0gtE&content_type=projectorScreen&select=fields.documentUrl'
+        var contentUrl = 'https://cdn.contentful.com/spaces/3bo0wgdn74or/environments/master/entries?access_token=78FV9bf1cCZA1kJamP2oGyqlazYISN_1wBEReGz0gtE&content_type=projectorScreen&select=fields.documentUrl,sys.updatedAt'
         var updatedAt = null;
         function update() {
-            fetch(contentUrl).then(function (data) {
+            fetch(contentUrl)
+            .then(function(response) { return response.json(); })
+            .then(function (data) {
                 if(!data ||!data.items || data.items.length === 0 || !data.items[0] || !data.items[0].fields || !data.items[0].fields.documentUrl) {
                     return;
                 }
@@ -36,6 +38,7 @@
         }
 
         var intervalMinutes = 1;
+        update();
         setInterval(update, intervalMinutes * 60 * 1000);
     </script>
     </body>
