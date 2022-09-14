@@ -2,8 +2,18 @@
     <head>
         <title>Landsm&oslash;ede 2022</title>
     <style>
-
+        #frame {
+            position: absolute;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+        }
     </style>
+
+<body>
+    <iframe id="f1" src="about:blank"></iframe>
+
     <script>
         var contentUrl = 'https://cdn.contentful.com/spaces/3bo0wgdn74or/environments/master/entries?access_token=78FV9bf1cCZA1kJamP2oGyqlazYISN_1wBEReGz0gtE&content_type=projectorScreen&select=fields.documentUrl'
         var updatedAt = null;
@@ -28,5 +38,5 @@
         var intervalMinutes = 1;
         setInterval(update, intervalMinutes * 60 * 1000);
     </script>
-<body><iframe id="f1" src=""></iframe></body>
+    </body>
 </html>
