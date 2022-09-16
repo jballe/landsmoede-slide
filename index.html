@@ -34,6 +34,9 @@
                 if(frame.src === newUrl && updatedAt === updatedAt) {
                     return;
                 }
+                if(frame.src === newUrl) {
+                    window.location.reload();
+                }
 
                 frame.src = newUrl;
                 updatedAt = documentUpdated;
